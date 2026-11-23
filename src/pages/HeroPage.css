@@ -1,0 +1,142 @@
+.hero {
+  padding-top: 0;  
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: var(--space-7);
+}
+
+.hero__media {
+  display: flex;
+  justify-content: center;
+}
+
+.hero__image {
+  width: auto;
+  max-width: 100%;
+  height: clamp(520px, 90vh, 1020px);
+  object-fit: contain;
+  margin-left:80px;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero__eyebrow {
+  max-width: none;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  line-height: var(--leading-snug);
+  color: var(--accent);
+}
+
+.hero__title {
+  font-size: clamp(2rem, 1.2rem + 3.6vw, 4rem);
+  font-family: var(--font-body);  
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.hero__cta {
+  margin-top: var(--space-8);
+  padding-inline: var(--space-6);
+  border-color: var(--accent);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__media {
+  animation: hero-rise 1200ms var(--ease-out) both;
+}
+
+.hero__content {
+  animation: hero-drop 900ms var(--ease-out) 250ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__media,
+  .hero__content {
+    animation: none;
+  }
+}
+
+.hero__dots {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+/* Área táctil de 44px, línea visible de 2px */
+.hero__dot {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hero__dot::before {
+  content: "";
+  position: absolute;
+  inset: 50% 6px auto;
+  height: 2px;
+  background: var(--border-strong);
+  transition: background var(--duration-base) var(--ease-out);
+}
+
+.hero__dot:hover::before {
+  background: var(--accent-hover);
+}
+
+.hero__dot[aria-current="true"]::before {
+  background: var(--accent);
+}
+
+
+
+@media (min-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .hero__media {
+    justify-content: flex-start;
+  }
+}

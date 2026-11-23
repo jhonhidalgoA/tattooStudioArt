@@ -1,0 +1,272 @@
+.artist-card {
+  --inset: var(--space-5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--surface) 60%, var(--bg));
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+}
+
+.artist-card::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: 3;
+  border: var(--border-width) solid var(--accent);
+  border-radius: 6px;
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.artist-card:is(:hover, :focus-within)::after {
+  opacity: 0.9;
+  transform: scale(1);
+}
+
+/* Foto */
+.artist-card__img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.artist-card__img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-card__img-wrapper > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 1100ms var(--ease-out);
+}
+
+.artist-card:is(:hover, :focus-within) .artist-card__img-wrapper > img {
+  transform: scale(1.04);
+}
+
+/* Degradado suave al pasar el mouse */
+.artist-card__img-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--bg) 60%, transparent),
+    transparent 50%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.artist-card:is(:hover, :focus-within) .artist-card__img-wrapper::before {
+  opacity: 1;
+}
+
+/* Redes: arriba a la derecha de la foto, por encima del enlace de la tarjeta */
+.artist-card__socials {
+  position: absolute;
+  top: var(--inset);
+  right: var(--inset);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateX(12px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.artist-card__socials a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(233 226 214 / 0.3);
+  border-radius: 50%;
+  background: rgb(10 10 10 / 0.7);
+  backdrop-filter: blur(6px);
+  transition:
+    background var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.artist-card__socials a img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: invert(0.92);
+  transition: filter var(--duration-base) var(--ease-out);
+}
+
+.artist-card__socials a:is(:hover, :focus-visible) {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.artist-card__socials a:is(:hover, :focus-visible) img {
+  filter: none;
+  mix-blend-mode: multiply;
+}
+
+/* Información: texto a la izquierda, flecha dorada a la derecha */
+.artist-card__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--inset);
+  text-align: left;
+}
+
+.artist-card__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: padding-left var(--duration-slow) var(--ease-out);
+}
+
+.artist-card:is(:hover, :focus-within) .artist-card__text {
+  align-items: center;
+  padding-left: clamp(12px, 4vw, 32px);
+}
+
+.artist-card__tag {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-3);
+  max-width: none;
+  margin: 0;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: justify-content var(--duration-slow) var(--ease-out);
+}
+
+.artist-card:is(:hover, :focus-within) .artist-card__tag {
+  justify-content: center;
+}
+
+.artist-card__tag-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+.artist-card:is(:hover, :focus-within) .artist-card__tag-line {
+  width: 40px;
+}
+
+.artist-card__name {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--text);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+/* Enlace al perfil: el área de clic cubre toda la tarjeta */
+.artist-card__link,
+.artist-card__link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.artist-card__link:focus-visible {
+  outline: none;
+}
+
+.artist-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.artist-card__link:focus-visible::after {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: -2px;
+  border-radius: var(--radius-md);
+}
+
+
+.artist-card__profile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.artist-card:is(:hover, :focus-within) .artist-card__socials,
+.artist-card:is(:hover, :focus-within) .artist-card__profile {
+  opacity: 1;
+  transform: none;
+}
+
+/* En pantallas táctiles no hay hover: controles siempre visibles */
+@media (hover: none) {
+  .artist-card__socials,
+  .artist-card__profile {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .artist-card {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artist-card::after,
+  .artist-card__img-wrapper > img,
+  .artist-card__img-wrapper::before,
+  .artist-card__socials,
+  .artist-card__socials a,
+  .artist-card__socials a img,
+  .artist-card__profile,
+  .artist-card__tag-line,
+  .artist-card__text,
+  .artist-card__tag,
+  .artist-card__name {
+    transition: none;
+  }
+}

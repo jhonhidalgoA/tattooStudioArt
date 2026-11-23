@@ -1,0 +1,69 @@
+.tattoo-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--surface, #141414);
+}
+
+.tattoo-card__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.tattoo-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-slow, 0.5s) var(--ease-out, ease);
+}
+
+.tattoo-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.35);
+  transition: background var(--duration-base, 0.3s) ease;
+}
+
+.tattoo-card__overlay span {
+  color: var(--text, #ffffff);
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.tattoo-card__overlay span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--accent, #d4af37);
+  transition: width var(--duration-base, 0.3s) ease;
+}
+
+/* Interacciones al pasar el cursor */
+.tattoo-card:hover .tattoo-card__image {
+  transform: scale(1.06);
+}
+
+.tattoo-card:hover .tattoo-card__overlay {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.tattoo-card:hover .tattoo-card__overlay span::after {
+  width: 100%;
+}

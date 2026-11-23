@@ -1,0 +1,43 @@
+.tattoo__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.tattoo__filter-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-body, sans-serif);
+  font-size: 1.05rem;
+  color: var(--text-muted, #888888);
+  cursor: pointer;
+  padding: 0 0 0.4rem 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.tattoo__filter-btn:hover {
+  color: var(--text, #ffffff);
+}
+
+/* Estado activo con la línea dorada inferior */
+.tattoo__filter-btn.active {
+  color: var(--accent, #d4af37);
+  font-weight: 500;
+}
+
+.tattoo__filter-btn.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent, #d4af37);
+  border-radius: 2px;
+}
