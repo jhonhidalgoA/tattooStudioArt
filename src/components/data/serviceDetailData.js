@@ -1,14 +1,22 @@
+import tattooHero from "../../assets/images/gallery/images (1).jpeg";
+import tattooProcess from "../../assets/images/gallery/tattoo_gallery_23.jpg";
+import tattooDetail from "../../assets/images/gallery/tattoo_gallery_25.jpg";
+
+import piercingHero from "../../assets/images/piercing/piercing_02.jpg";
+import piercingDetail  from "../../assets/images/piercing/piercing_05.webp";
+ import piercingProcess from "../../assets/images/piercing/piercing_04.jpg";
+
 export const serviceDetailData = {
-  tatuajes: {
+  tattoos: {
     category: "Servicio especializado",
     title: "Tatuajes",
     hook: "Tu esencia, convertida en arte.",
     description:
       "Creamos tatuajes personalizados que transforman tus ideas en obras de arte sobre la piel, combinando creatividad, precisión y técnica para dar vida a diseños que reflejan tu identidad.",
     images: [
-      "/src/assets/images/gallery/images (1).jpeg",
-      "/src/assets/images/gallery/tattoo_gallery_23.jpg",
-      "/src/assets/images/gallery/tattoo_gallery_25.jpg",
+      tattooHero,
+      tattooProcess,
+      tattooDetail,
     ],
     cta: "Reservar cita",
 
@@ -130,6 +138,189 @@ export const serviceDetailData = {
             question: "¿Puedo asistir acompañado?",
             answer:
               "Puedes consultarnos previamente sobre las condiciones de acompañamiento del estudio. Buscamos mantener un ambiente tranquilo, cómodo y adecuado para el desarrollo de cada sesión.",
+          },
+        ],
+      },
+    ],
+  },
+  piercing: {
+    category: "Servicio especializado",
+    title: "Piercing",
+    hook: "Precisión, estética y bioseguridad en cada perforación.",
+    description:
+      "Realizamos perforaciones corporales con técnica aséptica, agujas esterilizadas de un solo uso y joyería hipoalergénica en titanio grado implante para garantizar una cicatrización segura y estética.",
+    images: [piercingHero, piercingProcess, piercingDetail],
+    cta: "Reservar cita",
+
+    quickFacts: [
+      { label: "Duración estimada", value: "20 a 40 minutos" },
+      { label: "Nivel de molestia", value: "Rápido y tolerado" },
+      { label: "Cicatrización", value: "6 a 12 semanas según zona" },
+      { label: "Incluye", value: "Joyería en titanio + guía de cuidado" },
+    ],
+
+    process: [
+      {
+        title: "Valoración anatómica",
+        description:
+          "Evaluamos la zona a perforar y elegimos la joyería ideal según tu anatomía.",
+      },
+      {
+        title: "Marcación y esterilización",
+        description:
+          "Definimos el punto exacto con simetría y preparamos material 100% estéril.",
+      },
+      {
+        title: "Perforación profesional",
+        description:
+          "Procedimiento rápido y preciso con aguja americana desechable.",
+      },
+      {
+        title: "Control y cambio de pieza",
+        description:
+          "Seguimiento de cicatrización y ajuste a joyería más corta cuando desinflame.",
+      },
+    ],
+
+    care: {
+      before: [
+        "Asiste bien alimentado e hidratado.",
+        "Evita alcohol o aspirinas 24 h antes.",
+        "Llega con la zona limpia y sin cremas.",
+        "Trae tu documento de identidad.",
+      ],
+      after: [
+        "Limpia dos veces al día con suero fisiológico estéril.",
+        "No gires, aprietes ni retires la joya durante la cicatrización.",
+        "Evita piscinas, saunas, mar y maquillaje sobre la zona.",
+        "No duermas directamente sobre la perforación reciente.",
+      ],
+    },
+
+    faqs: [
+      {
+        label: "Joyería y materiales",
+        subtitle: "Calidad biocompatible.",
+        questions: [
+          {
+            question: "¿Qué material usan para la primera perforación?",
+            answer:
+              "Utilizamos exclusivamente titanio grado implante ASTM F-136 o acero quirúrgico certificado, libres de níquel para evitar alergias e infecciones.",
+          },
+          {
+            question: "¿Puedo llevar mi propia joya?",
+            answer:
+              "Por protocolos de bioseguridad y control de esterilización en autoclave, la perforación inicial se realiza únicamente con joyería nueva del estudio.",
+          },
+        ],
+      },
+      {
+        label: "Cuidados y tiempos",
+        subtitle: "Recuperación saludable.",
+        questions: [
+          {
+            question: "¿Cuándo puedo cambiar la joya?",
+            answer:
+              "El primer ajuste de poste (downsize) suele hacerse entre las 4 y 6 semanas. Para cambios estéticos completos se recomienda esperar la cicatrización total.",
+          },
+          {
+            question: "¿Usan pistola perforadora?",
+            answer:
+              "No. Todas las perforaciones se realizan con aguja hueca estéril de un solo uso, lo que evita traumatismos en el tejido y favorece una sanación limpia.",
+          },
+        ],
+      },
+    ],
+  },
+  design: {
+    category: "Servicio especializado",
+    title: "Diseño de tatuajes",
+    hook: "De una idea abstracta a una pieza única lista para tu piel.",
+    description:
+      "Desarrollamos ilustraciones y composiciones exclusivas pensadas desde cero para la anatomía de tu cuerpo, asegurando equilibrio, fluidez y un estilo propio que no verás repetido.",
+    images: [tattooHero, tattooProcess, tattooDetail],
+    cta: "Solicitar diseño",
+
+    quickFacts: [
+      { label: "Entrega de boceto", value: "3 a 5 días hábiles" },
+      { label: "Rondas de ajuste", value: "Hasta 2 modificaciones incluidas" },
+      { label: "Adaptación", value: "A medida según zona anatómica" },
+      { label: "Incluye", value: "Boceto digital + stencil para sesión" },
+    ],
+
+    process: [
+      {
+        title: "Briefing y referencias",
+        description:
+          "Analizamos tu concepto, estilo preferido, tamaño y el significado que buscas transmitir.",
+      },
+      {
+        title: "Composición anatómica",
+        description:
+          "Estructuramos el flujo del dibujo respetando el movimiento y volumen natural de la zona.",
+      },
+      {
+        title: "Revisión y ajustes",
+        description:
+          "Presentamos la propuesta para afinar detalles, sombras o proporciones antes de tatuar.",
+      },
+      {
+        title: "Preparación de stencil",
+        description:
+          "Dejamos el arte final listo en alta precisión para trasladarlo a tu piel en estudio.",
+      },
+    ],
+
+    care: {
+      before: [
+        "Reúne entre 3 y 5 imágenes de referencia del estilo que te gusta.",
+        "Define la zona exacta y el tamaño aproximado en centímetros.",
+        "Comunica si deseas integrar elementos simbólicos o fechas.",
+        "Confía en el criterio compositivo del artista para lograr legibilidad.",
+      ],
+      after: [
+        "Revisa el boceto con calma y solicita todos tus ajustes en una misma ronda.",
+        "Evita modificar el tamaño drásticamente el día de la cita para no perder detalle.",
+        "Si vas a tatuarte la pieza, hidrata bien la piel los días previos.",
+        "El diseño es exclusivo para tu proyecto y se archiva junto a tu historial.",
+      ],
+    },
+
+    faqs: [
+      {
+        label: "Proceso creativo",
+        subtitle: "Cómo creamos tu pieza.",
+        questions: [
+          {
+            question: "¿El diseño se entrega antes del día de la cita?",
+            answer:
+              "En proyectos medianos y grandes te enviamos una vista previa días antes de la sesión para validar composición y realizar los ajustes acordados.",
+          },
+          {
+            question: "¿Puedo pedir solo el diseño sin tatuarme en el estudio?",
+            answer:
+              "Sí, ofrecemos el servicio de ilustración personalizada. El valor depende de la complejidad, nivel de detalle y dimensiones de la obra.",
+          },
+          {
+            question: "¿Copian tatuajes de internet?",
+            answer:
+              "No realizamos copias exactas de obras de otros artistas. Usamos tus referencias como punto de partida para crear una pieza original y adaptada a ti.",
+          },
+        ],
+      },
+      {
+        label: "Cambios y reservas",
+        subtitle: "Condiciones del servicio.",
+        questions: [
+          {
+            question: "¿Qué pasa si quiero cambiar por completo la idea inicial?",
+            answer:
+              "Las modificaciones sobre la propuesta base están incluidas. Si decides cambiar totalmente de concepto una vez iniciado el boceto, se cotiza como una nueva propuesta.",
+          },
+          {
+            question: "¿El valor del diseño se abona al tatuaje?",
+            answer:
+              "Cuando agendas tu sesión en el estudio, el anticipo del diseño se descuenta del valor total del tatuaje según las condiciones acordadas en la asesoría.",
           },
         ],
       },

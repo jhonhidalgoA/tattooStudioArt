@@ -1,27 +1,29 @@
 import { useState } from "react";
 
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Plus } from "lucide-react";
 
-import { serviceDetailData } from "../components/data/serviceDetailData";
-import { servicesData } from "../components/data/servicesData";
+import { serviceDetailData } from "../../components/data/serviceDetailData";
+import { servicesData } from "../../components/data/servicesData";
+import { footerData } from "../../components/data/footerData";
 
 
-import Navbar from "../components/ui/navbar/Navbar";
-import Footer from "../components/ui/footer/Footer";
+import Navbar from "../../components/ui/navbar/Navbar";
+import Footer from "../../components/ui/footer/Footer";
 
-import ServiceSectionTitle from "../components/ui/title/ServiceSectionTitle";
+import ServiceSectionTitle from "../../components/ui/title/ServiceSectionTitle";
 
 import "./TattoosPage.css";
 
-const BOOKING_LINK = "#";
+const BOOKING_LINK = `tel:${footerData.contact.phoneHref}`;
 
 export default function TattoosPage() {
-  const { slug } = useParams();
   const [activeFaq, setActiveFaq] = useState(0);
-  const service = serviceDetailData[slug];
+  const service = serviceDetailData.tattoos;
 
-  const base = servicesData.find((item) => item.link === `/servicios/${slug}`);
+  const base = servicesData.find(
+    (item) => item.link === "/services/tattoos",
+  );
 
   if (!service) {
     return (
