@@ -6,7 +6,7 @@ import { Plus } from "lucide-react";
 import { serviceDetailData } from "../../components/data/serviceDetailData";
 import { servicesData } from "../../components/data/servicesData";
 import { footerData } from "../../components/data/footerData";
-
+import { galleryData } from "../../components/data/galleryData";
 
 import Navbar from "../../components/ui/navbar/Navbar";
 import Footer from "../../components/ui/footer/Footer";
@@ -21,9 +21,7 @@ export default function TattoosPage() {
   const [activeFaq, setActiveFaq] = useState(0);
   const service = serviceDetailData.tattoos;
 
-  const base = servicesData.find(
-    (item) => item.link === "/services/tattoos",
-  );
+  const base = servicesData.find((item) => item.link === "/services/tattoos");
 
   if (!service) {
     return (
@@ -195,6 +193,22 @@ export default function TattoosPage() {
                   </details>
                 ))}
               </div>
+            </div>
+          </section>
+          {/* 5. Ejemplos reales */}
+          <section className="service-detail__section">
+            <ServiceSectionTitle
+              eyebrow="Trazos únicos."
+              title="Ideas que se convierten en arte sobre la piel.
+              "
+            />
+            <div className="service-detail__gallery">
+              {(service.gallery ?? galleryData).map((item) => (
+                <figure key={item.id} className="service-detail__work">
+                  <img src={item.src} alt={item.alt || item.title} />
+                  <figcaption>{item.title}</figcaption>
+                </figure>
+              ))}
             </div>
           </section>
         </div>

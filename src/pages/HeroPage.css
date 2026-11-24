@@ -1,5 +1,5 @@
 .hero {
-  padding-top: 0;  
+  padding-top: 0;
   overflow: hidden;
 }
 
@@ -20,7 +20,23 @@
   max-width: 100%;
   height: clamp(520px, 90vh, 1020px);
   object-fit: contain;
-  margin-left:80px;
+  margin-left: 80px;
+  transform: translate(var(--shift-x, 0), var(--shift-y, 0));
+  filter: saturate(0.9) brightness(0.96);
+  /* El borde inferior se disuelve en el fondo en lugar del corte seco */
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+}
+
+/* Ajuste por slide: alinea la posición de la figura (afinar a ojo) */
+.hero__image--1 {
+  --shift-x: 0;
+  --shift-y: 0;
+}
+
+.hero__image--2 {
+  --shift-x: -8%;
+  --shift-y: -7%;
 }
 
 .hero__content {
@@ -41,9 +57,10 @@
 
 .hero__title {
   font-size: clamp(2rem, 1.2rem + 3.6vw, 4rem);
-  font-family: var(--font-body);  
+  font-family: var(--font-body);
   line-height: 1.15;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .hero__cta {
@@ -93,42 +110,6 @@
     animation: none;
   }
 }
-
-.hero__dots {
-  display: flex;
-  gap: var(--space-2);
-  margin-top: var(--space-6);
-}
-
-/* Área táctil de 44px, línea visible de 2px */
-.hero__dot {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.hero__dot::before {
-  content: "";
-  position: absolute;
-  inset: 50% 6px auto;
-  height: 2px;
-  background: var(--border-strong);
-  transition: background var(--duration-base) var(--ease-out);
-}
-
-.hero__dot:hover::before {
-  background: var(--accent-hover);
-}
-
-.hero__dot[aria-current="true"]::before {
-  background: var(--accent);
-}
-
-
 
 @media (min-width: 900px) {
   .hero__inner {

@@ -120,15 +120,12 @@ export default function PiercingPage() {
 
           {/* 5. Ejemplos reales */}
           <section className="service-detail__section">
-            <ServiceSectionTitle
-              eyebrow="Trabajos"
-              title="Perforaciones realizadas"
-            />
+            <ServiceSectionTitle eyebrow="Arte en cada detalle." title="Precisión y estilo en cada perforación" />
             <div className="service-detail__gallery">
-              {galleryData.map((item) => (
+              {(service.gallery ?? galleryData).map((item) => (
                 <figure key={item.id} className="service-detail__work">
-                  <img src={item.src} alt={item.title} />
-                  <figcaption>{item.category}</figcaption>
+                  <img src={item.src} alt={item.alt || item.title} />
+                  <figcaption>{item.title}</figcaption>
                 </figure>
               ))}
             </div>

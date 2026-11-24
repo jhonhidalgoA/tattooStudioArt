@@ -3,8 +3,11 @@ import tattooProcess from "../../assets/images/gallery/tattoo_gallery_23.jpg";
 import tattooDetail from "../../assets/images/gallery/tattoo_gallery_25.jpg";
 
 import piercingHero from "../../assets/images/piercing/piercing_02.jpg";
-import piercingDetail  from "../../assets/images/piercing/piercing_05.webp";
- import piercingProcess from "../../assets/images/piercing/piercing_04.jpg";
+import piercingDetail from "../../assets/images/piercing/piercing_05.webp";
+import piercingProcess from "../../assets/images/piercing/piercing_04.jpg";
+
+import designHero from "../../assets/images/design/design_04.jpg";
+import designProcess from "../../assets/images/design/design_02.jpg";
 
 export const serviceDetailData = {
   tattoos: {
@@ -13,11 +16,7 @@ export const serviceDetailData = {
     hook: "Tu esencia, convertida en arte.",
     description:
       "Creamos tatuajes personalizados que transforman tus ideas en obras de arte sobre la piel, combinando creatividad, precisión y técnica para dar vida a diseños que reflejan tu identidad.",
-    images: [
-      tattooHero,
-      tattooProcess,
-      tattooDetail,
-    ],
+    images: [tattooHero, tattooProcess, tattooDetail],
     cta: "Reservar cita",
 
     quickFacts: [
@@ -61,7 +60,6 @@ export const serviceDetailData = {
         "No te rasques ni arranques las costras.",
       ],
     },
-
     faqs: [
       {
         label: "Cotizaciones y diseños",
@@ -143,6 +141,7 @@ export const serviceDetailData = {
       },
     ],
   },
+
   piercing: {
     category: "Servicio especializado",
     title: "Piercing",
@@ -158,7 +157,6 @@ export const serviceDetailData = {
       { label: "Cicatrización", value: "6 a 12 semanas según zona" },
       { label: "Incluye", value: "Joyería en titanio + guía de cuidado" },
     ],
-
     process: [
       {
         title: "Valoración anatómica",
@@ -181,7 +179,6 @@ export const serviceDetailData = {
           "Seguimiento de cicatrización y ajuste a joyería más corta cuando desinflame.",
       },
     ],
-
     care: {
       before: [
         "Asiste bien alimentado e hidratado.",
@@ -196,7 +193,6 @@ export const serviceDetailData = {
         "No duermas directamente sobre la perforación reciente.",
       ],
     },
-
     faqs: [
       {
         label: "Joyería y materiales",
@@ -231,14 +227,45 @@ export const serviceDetailData = {
         ],
       },
     ],
+    gallery: [
+      {
+        id: "piercing-1",
+        src: "/src/assets/images/piercing/piercing_04.jpg",
+        alt: "Perforaciones en nariz y labios con joyería metálica",
+        title: "Labio y nariz",
+        category: "Piercing",
+      },
+      {
+        id: "piercing-2",
+        src: "/src/assets/images/piercing/piercing_05.webp",
+        alt: "Oreja con múltiples perforaciones en el lóbulo y hélix junto a un pequeño tatuaje de rosa",
+        title: "Lóbulo y hélix",
+        category: "Piercing",
+      },
+      {
+        id: "piercing-3",
+        src: "/src/assets/images/piercing/piercing_06.webp",
+        alt: "Oreja con perforación industrial, aros dorados y lóbulo",
+        title: "Industrial y aro",
+        category: "Piercing",
+      },
+      {
+        id: "piercing-4",
+        src: "/src/assets/images/piercing/piercing_03.webp",
+        alt: "Perforación en el ombligo con joyería colgante",
+        title: "Ombligo",
+        category: "Piercing",
+      },
+    ],
   },
+
   design: {
     category: "Servicio especializado",
     title: "Diseño de tatuajes",
     hook: "De una idea abstracta a una pieza única lista para tu piel.",
     description:
       "Desarrollamos ilustraciones y composiciones exclusivas pensadas desde cero para la anatomía de tu cuerpo, asegurando equilibrio, fluidez y un estilo propio que no verás repetido.",
-    images: [tattooHero, tattooProcess, tattooDetail],
+    images: [designHero, designProcess],
     cta: "Solicitar diseño",
 
     quickFacts: [
@@ -313,7 +340,8 @@ export const serviceDetailData = {
         subtitle: "Condiciones del servicio.",
         questions: [
           {
-            question: "¿Qué pasa si quiero cambiar por completo la idea inicial?",
+            question:
+              "¿Qué pasa si quiero cambiar por completo la idea inicial?",
             answer:
               "Las modificaciones sobre la propuesta base están incluidas. Si decides cambiar totalmente de concepto una vez iniciado el boceto, se cotiza como una nueva propuesta.",
           },
@@ -321,6 +349,162 @@ export const serviceDetailData = {
             question: "¿El valor del diseño se abona al tatuaje?",
             answer:
               "Cuando agendas tu sesión en el estudio, el anticipo del diseño se descuenta del valor total del tatuaje según las condiciones acordadas en la asesoría.",
+          },
+        ],
+      },
+    ],
+    gallery: [
+      {
+        id: "design-1",
+        src: "/src/assets/images/design/design_08.jpg",
+        alt: "Diseño de tatuaje con paloma y rosas rojas",
+        title: "Paloma y rosas",
+        category: "Diseno",
+      },
+      {
+        id: "design-2",
+        src: "/src/assets/images/design/design_06.png",
+        alt: "Tatuaje en sombreado de figura femenina vendada con balanza y su boceto digital",
+        title: "Justicia y silencio",
+        category: "Diseno",
+      },
+      {
+        id: "design-3",
+        src: "/src/assets/images/design/design_05.png",
+        alt: "Diseño y tatuaje de manga completa con león y figuras en sombreado",
+        title: "Manga de realismo",
+        category: "Diseno",
+      },
+      {
+        id: "design-4",
+        src: "/src/assets/images/design/design_03.jpg",
+        alt: "Boceto previo y tatuaje de catrina en sombreado",
+        title: "Catrina en sombreado",
+        category: "Diseno",
+      },
+    ],
+  },
+
+  coverUp: {
+    category: "Servicio especializado",
+    title: "Cubrimiento de tatuajes",
+    hook: "Dale una segunda vida a tu piel con una nueva propuesta.",
+    description:
+      "Evaluamos tatuajes antiguos, no deseados o desgastados para diseñar una transformación o cubrimiento coherente, integrando sombras, texturas y composiciones que armonicen con la pieza previa.",
+    images: [tattooHero, tattooProcess, tattooDetail],
+    cta: "Cotizar cubrimiento",
+
+    quickFacts: [
+      { label: "Duración estimada", value: "1 a 4 horas por sesión" },
+      { label: "Viabilidad", value: "Sujeta a evaluación presencial o fotos" },
+      { label: "Cicatrización", value: "2 a 4 semanas por sesión" },
+      { label: "Incluye", value: "Diagnóstico de piel + diseño adaptado" },
+    ],
+
+    process: [
+      {
+        title: "Diagnóstico del tatuaje previo",
+        description:
+          "Analizamos saturación de tinta, tamaño, trazos, colores y el estado de la piel.",
+      },
+      {
+        title: "Estrategia de cobertura",
+        description:
+          "Definimos si conviene un cover-up directo, rediseño o sesiones previas de aclarado.",
+      },
+      {
+        title: "Diseño y adaptación",
+        description:
+          "Creamos una composición con el flujo y contraste necesarios para integrar la pieza anterior.",
+      },
+      {
+        title: "Sesión y seguimiento",
+        description:
+          "Ejecutamos con protocolos de bioseguridad y revisamos la sanación para valorar retoques.",
+      },
+    ],
+
+    care: {
+      before: [
+        "Envía fotos claras y sin filtros del tatuaje actual con buena luz.",
+        "Mantén la piel hidratada los días previos a la valoración o cita.",
+        "Evita alcohol, sol directo o irritaciones sobre la zona.",
+        "Ven bien descansado y alimentado el día de la sesión.",
+      ],
+      after: [
+        "Lava suavemente con agua y jabón neutro sin frotar.",
+        "Aplica la crema cicatrizante indicada en capas finas.",
+        "No expongas la zona al sol, piscina o mar durante la cicatrización.",
+        "No rasques ni retires costras; algunos cubrimientos requieren más de una sesión.",
+      ],
+    },
+    gallery: [
+      {
+        id: "design-1",
+        src: "/src/assets/images/design/design_08.jpg",
+        alt: "Perforación en oreja con joyería de titanio",
+        title: "Helix en titanio",
+        category: "Oreja",
+      },
+      {
+        id: "design-2",
+        src: "/src/assets/images/design/design_02.jpg",
+        alt: "Perforación estética en estudio",
+        title: "Lóbulo superior",
+        category: "Lóbulo",
+      },
+      {
+        id: "design-3",
+        src: "/src/assets/images/design/design_05.png",
+        alt: "Detalle de perforación corporal",
+        title: "Perforación facial",
+        category: "Facial",
+      },
+      {
+        id: "design-4",
+        src: "/src/assets/images/design/design_03.jpg",
+        alt: "Joyería biocompatible para perforación",
+        title: "Joyería grado implante",
+        category: "Joyería",
+      },
+    ],
+
+    faqs: [
+      {
+        label: "Evaluación y viabilidad",
+        subtitle: "Qué revisar antes de cubrir.",
+        questions: [
+          {
+            question: "¿Cualquier tatuaje se puede cubrir?",
+            answer:
+              "Depende del tamaño, la densidad de la tinta, el contraste y el estado de la piel. Un tatuaje más oscuro o grande suele requerir un diseño mayor o más elaborado para integrarlo bien.",
+          },
+          {
+            question: "¿Qué necesito para cotizar un cubrimiento?",
+            answer:
+              "Comparte fotos nítidas del tatuaje actual (de frente y a distancia), indícanos la zona del cuerpo, el tamaño aproximado y qué estilo o idea te gustaría lograr.",
+          },
+          {
+            question:
+              "¿Siempre queda completamente invisible el tatuaje anterior?",
+            answer:
+              "El objetivo es camuflarlo e integrarlo de forma armónica en el nuevo diseño. En piezas muy saturadas o con relieve previo, el resultado final depende de las características de la piel y del diseño elegido.",
+          },
+        ],
+      },
+      {
+        label: "Sesiones y proceso",
+        subtitle: "Tiempos y planificación.",
+        questions: [
+          {
+            question: "¿Se hace en una sola sesión?",
+            answer:
+              "Los cubrimientos pequeños o sencillos pueden resolverse en una sesión, mientras que piezas grandes o con alto nivel de detalle suelen requerir varias sesiones espaciadas.",
+          },
+          {
+            question: "¿Es necesario aclarar primero el tatuaje?",
+            answer:
+              "No siempre. Solo lo recomendamos en casos puntuales donde la tinta previa limita mucho las opciones del nuevo diseño.",
           },
         ],
       },

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import Navbar from "../components/ui/navbar/Navbar";
 
-import "./HeroPage.css";
 import Artists from "./ArtistsPage";
 import Gallery from "./GalleryPage";
 import Services from "./services/ServicesPage";
 import Testimonials from "./TestimonialsPage";
-import Footer from "../components/ui/footer/Footer";
 import ContactPage from "./ContactPage";
 
+import Navbar from "../components/ui/navbar/Navbar";
+import Footer from "../components/ui/footer/Footer";
 
+import "./HeroPage.css";
 
 const slides = [
   {
@@ -27,7 +27,7 @@ const slides = [
 ];
 
 const cta = "Reservar cita";
-const INTERVAL = 7000; 
+const INTERVAL = 7000;
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
@@ -65,17 +65,17 @@ export default function Hero() {
             <img
               src={slide.image}
               alt={slide.imageAlt}
-              className="hero__image"
+              className={`hero__image hero__image--${current + 1}`}
             />
           </div>
         </div>
       </section>
-      <Gallery/>
-      <Artists />  
-      <Services/> 
-      <Testimonials/>  
-      <ContactPage/>
-      <Footer /> 
+      <Gallery />
+      <Artists />
+      <Services />
+      <Testimonials />
+      <ContactPage />
+      <Footer />
     </>
   );
 }

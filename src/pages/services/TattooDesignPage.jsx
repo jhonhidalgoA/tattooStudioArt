@@ -19,7 +19,8 @@ export default function TattooCoverUpPage() {
   const service = serviceDetailData.design;
 
   const base = servicesData.find(
-    (item) => item.link === "/services/design" || item.link === "/servicios/diseno"
+    (item) =>
+      item.link === "/services/design" || item.link === "/servicios/diseno",
   );
   const number = String(base?.id ?? 4).padStart(2, "0");
 
@@ -41,7 +42,9 @@ export default function TattooCoverUpPage() {
               </p>
               <h1 className="service-detail__title">{service.title}</h1>
               <p className="service-detail__hook">{service.hook}</p>
-              <p className="service-detail__description">{service.description}</p>
+              <p className="service-detail__description">
+                {service.description}
+              </p>
               <a href={BOOKING_LINK} className="btn btn--primary">
                 {service.cta}
               </a>
@@ -68,7 +71,10 @@ export default function TattooCoverUpPage() {
               <ol className="service__detail-steps">
                 {service.process.map((step, index) => (
                   <li key={step.title} className="service__detail-step">
-                    <span className="service__detail-step-num" aria-hidden="true">
+                    <span
+                      className="service__detail-step-num"
+                      aria-hidden="true"
+                    >
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <div className="service__detail-step-body">
@@ -126,15 +132,30 @@ export default function TattooCoverUpPage() {
               title="Diseños personalizados"
             />
             <div className="service-detail__gallery">
-              {galleryData.map((item) => (
+              {(service.gallery ?? galleryData).map((item) => (
                 <figure key={item.id} className="service-detail__work">
-                  <img src={item.src} alt={item.title} />
-                  <figcaption>{item.category}</figcaption>
+                  <img src={item.src} alt={item.alt || item.title} />
+                  <figcaption>{item.title}</figcaption>
                 </figure>
               ))}
             </div>
           </section>
-
+          
+          {/* 5. Ejemplos reales */}
+          <section className="service-detail__section">
+            <ServiceSectionTitle
+              eyebrow="Arte en cada detalle."
+              title="Precisión y estilo en cada perforación"
+            />
+            <div className="service-detail__gallery">
+              {(service.gallery ?? galleryData).map((item) => (
+                <figure key={item.id} className="service-detail__work">
+                  <img src={item.src} alt={item.alt || item.title} />
+                  <figcaption>{item.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
           {/* 6. Preguntas frecuentes */}
           <section className="service-detail__section">
             <ServiceSectionTitle
