@@ -1,5 +1,19 @@
+import { artistsData } from "./artistsData";
+
+const resolveArtist = (slug) => {
+  const artist = artistsData.find((item) => item.slug === slug);
+  if (!artist) return undefined;
+
+  return { name: artist.name, href: artist.link, photo: artist.image };
+};
+
+const withArtist = (image) =>
+  image?.artistSlug
+    ? { ...image, artist: resolveArtist(image.artistSlug) }
+    : image;
+
 export const imagesData = [
-  /* hero / galería principal */
+  /* hero */
   {
     id: 1,
     src: "/images/hero/tattoo_01.jpg",
@@ -9,6 +23,7 @@ export const imagesData = [
     groups: ["gallery", "tatuajes"],
     description:
       "Un retrato imponente de un lobo que combina sombras profundas, texturas detalladas y un nivel de realismo que transmite fuerza y carácter.",
+    artistSlug: "edwin-wood",
   },
   {
     id: 2,
@@ -19,6 +34,7 @@ export const imagesData = [
     groups: ["gallery", "tatuajes"],
     description:
       "Una composición geométrica inspirada en la exploración y el movimiento, creada mediante trazos espontáneos, líneas superpuestas y detalles de boceto.",
+    artistSlug: "sara-morgan",
   },
   {
     id: 3,
@@ -29,6 +45,7 @@ export const imagesData = [
     groups: ["gallery", "tatuajes"],
     description:
       "Una composición llena de simbolismo que reúne elementos clásicos del tatuaje tradicional, con contornos definidos, colores vibrantes y formas expresivas.",
+    artistSlug: "edwin-wood",
   },
   {
     id: 4,
@@ -39,71 +56,78 @@ export const imagesData = [
     groups: ["gallery", "tatuajes"],
     description:
       "Un elefante lleno de personalidad, acompañado de pinceladas libres y fusiones de color que crean una apariencia artística inspirada en la pintura en acuarela.",
+    artistSlug: "susy-smith",
   },
 
-  /* galería & footer (6 piezas completas para CardModal) */
+  /* footer */
   {
     id: 5,
     src: "/src/assets/images/gallery/tatoo_gallery_2.jpg",
-    alt: "Tatuaje neotradicional de golondrinas y flores rojas con geometría en la cadera",
-    title: "Vuelo y Flores",
-    category: "Neotradicional",
-    groups: ["gallery", "footer", "tatuajes"],
+    alt: "Tatuaje de dos golondrinas, flores rojas y formas geométricas en la cadera",
+    title: "Vuelo Geométrico",
+    category: "Tradicional",
+    groups: ["footer"],
     description:
-      "Composición con golondrinas, flores rojas y líneas geométricas sutiles diseñadas para acompañar la curva natural de la cadera.",
+      "Dos golondrinas y flores rojas se encuentran con formas geométricas y puntillismo, en una composición que une tradición y diseño contemporáneo.",
+    artistSlug: "sara-morgan",
   },
   {
     id: 6,
     src: "/src/assets/images/gallery/tattoo_gallery_10.jpg",
-    alt: "Tatuaje blackwork orgánico y caligráfico en el costado del torso",
-    title: "Trazos de Costado",
-    category: "Blackwork",
-    groups: ["gallery", "footer", "tatuajes"],
+    alt: "Tatuaje tribal negro de líneas fluidas sobre el hombro y el cuello",
+    title: "Fuego Negro",
+    category: "Tribal",
+    groups: ["footer"],
     description:
-      "Diseño de flujo orgánico con puntas afiladas y contraste negro intenso pensado para seguir la anatomía del costado.",
+      "Líneas negras fluidas que siguen el movimiento del hombro y el cuello, con un contraste fuerte entre el trazo sólido y la piel.",
+    artistSlug: "edwin-wood",
   },
   {
     id: 7,
     src: "/src/assets/images/gallery/tattoo_gallery_6.jpg",
-    alt: "Tatuaje ornamental y tribal simétrico en la parte alta de la espalda",
-    title: "Armadura en Espalda",
-    category: "Ornamental",
-    groups: ["gallery", "footer", "tatuajes"],
+    alt: "Tatuaje de línea fina con motivo ornamental de encaje en la zona lumbar",
+    title: "Encaje de Tinta",
+    category: "Línea Fina",
+    groups: ["footer"],
     description:
-      "Pieza de alto contraste y simetría central que recorre la columna y se expande con fuerza hacia ambos hombros.",
+      "Líneas finas y delicadas que imitan un encaje, pensadas para acompañar la forma de la zona lumbar con elegancia y discreción.",
+    artistSlug: "sara-morgan",
   },
   {
     id: 8,
     src: "/src/assets/images/gallery/tattoo_gallery_9.jpg",
-    alt: "Tatuaje de mariposa monarca a color con trazos dinámicos en la cadera",
-    title: "Mariposa en Color",
-    category: "Color",
-    groups: ["gallery", "footer", "tatuajes"],
+    alt: "Tatuaje tribal negro simétrico que recorre la espalda y sigue la columna",
+    title: "Columna Viva",
+    category: "Tribal",
+    groups: ["footer"],
     description:
-      "Ilustración vibrante con degradados cálidos y trazos fluidos que aportan profundidad y movimiento sobre la piel.",
+      "Un diseño simétrico que recorre la espalda y sigue la columna, con volúmenes negros sólidos y remates en espiral.",
+    artistSlug: "edwin-wood",
   },
   {
     id: 9,
     src: "/src/assets/images/gallery/tattoo_gallery_8.jpg",
-    alt: "Tatuaje blackwork de flujo orgánico en el hombro y cuello",
-    title: "Flujo en Cuello",
-    category: "Blackwork",
-    groups: ["gallery", "footer", "tatuajes"],
+    alt: "Tatuaje de línea fina con una flor delicada",
+    title: "Jardín Sutil",
+    category: "Línea Fina",
+    groups: ["footer"],
     description:
-      "Saturación negra profunda con movimiento ascendente desde el hombro hacia el cuello para resaltar la estructura muscular.",
+      "Trazos mínimos y precisos que dibujan una flor con delicadeza, para quien busca un tatuaje discreto y atemporal.",
+    artistSlug: "susy-smith",
   },
   {
     id: 10,
     src: "/src/assets/images/gallery/tattoo_gallery_5.jpg",
-    alt: "Tatuaje fine line de mariposa con detalles geométricos en el pecho",
-    title: "Mariposa Fina",
-    category: "Fine Line",
-    groups: ["gallery", "footer", "tatuajes"],
+    alt: "Tatuaje de una mariposa en tonos naranja y ámbar",
+    title: "Vuelo Ámbar",
+    category: "Color",
+    groups: ["footer"],
     description:
-      "Trazos delicados y detalles geométricos minimalistas centrados en el esternón con acabado limpio y sutil.",
+      "Una mariposa en tonos naranja y ámbar, con pequeños detalles de color que le dan movimiento y calidez.",
+    artistSlug: "susy-smith",
   },
 
-  /* services (rutas en inglés) */
+  /* services */
   {
     id: 14,
     src: "/images/tattoo.avif",
@@ -125,7 +149,7 @@ export const imagesData = [
     link: "/services/piercing",
   },
   {
-    id: 22,
+    id: 16,
     src: "/images/transformation.avif",
     title: "Transformación",
     alt: "Transformación de un tatuaje antiguo mediante un nuevo diseño artístico",
@@ -135,7 +159,7 @@ export const imagesData = [
     link: "/services/cover-up",
   },
   {
-    id: 16,
+    id: 17,
     src: "/images/design.avif",
     title: "Diseño de tatuajes",
     alt: "Diseño artístico de tatuaje plasmado en un boceto",
@@ -147,7 +171,7 @@ export const imagesData = [
 
   /* testimonials */
   {
-    id: 17,
+    id: 18,
     src: "/images/testimonials/men_01.png",
     alt: "Foto de Camilo Restrepo",
     title: "Camilo Restrepo",
@@ -157,7 +181,7 @@ export const imagesData = [
       "Llevaba años con un tatuaje que no me gustaba y vine a hacer un cubrimiento. El resultado superó lo que imaginaba.",
   },
   {
-    id: 18,
+    id: 19,
     src: "/images/testimonials/woman_01.png",
     alt: "Foto de Laura Gómez",
     title: "Laura Gómez",
@@ -167,7 +191,7 @@ export const imagesData = [
       "Fue mi primer tatuaje y estaba muy nerviosa. El equipo me explicó todo con paciencia y me hizo sentir segura. Quedó exactamente como lo soñé.",
   },
   {
-    id: 19,
+    id: 20,
     src: "/images/testimonials/men_02.png",
     alt: "Foto de Andrés Molina",
     title: "Andrés Molina",
@@ -177,7 +201,7 @@ export const imagesData = [
       "Se nota la dedicación en cada línea. Trabajan con mucho detalle y con un ambiente muy limpio. Ya reservé mi próxima cita.",
   },
   {
-    id: 20,
+    id: 21,
     src: "/images/testimonials/woman_02.png",
     alt: "Foto de Valentina Ríos",
     title: "Valentina Ríos",
@@ -187,7 +211,7 @@ export const imagesData = [
       "Le llevé una idea muy vaga a la artista y la convirtió en un diseño único. Cada vez que me lo miro, me acuerdo por qué lo hice.",
   },
   {
-    id: 21,
+    id: 22,
     src: "/images/testimonials/woman_03.png",
     alt: "Foto de Alejandra Ramirez",
     title: "Alejandra Ramirez",
@@ -196,13 +220,24 @@ export const imagesData = [
     quote:
       "Atención excelente de principio a fin. Respetaron el tiempo de cicatrización y me dieron todos los cuidados por escrito. Totalmente recomendado.",
   },
+  {
+    id: 23,
+    src: "/images/testimonials/woman_04.jpg",
+    alt: "Fotografía de Mariana Torres mostrando su piercing",
+    title: "Mariana Torres",
+    category: "Piercing",
+    groups: ["testimonios"],
+    quote:
+      "Siempre quise hacerme un piercing, pero tenía muchas dudas. Me asesoraron durante todo el proceso, cuidaron cada detalle y el resultado quedó perfecto. Una experiencia excelente, con mucha profesionalidad y confianza.",
+  },
 ];
 
-export const getImage = (id) => imagesData.find((image) => image.id === id);
+export const getImage = (id) =>
+  withArtist(imagesData.find((image) => image.id === id));
 
 export const getImages = (ids) => ids.map(getImage).filter(Boolean);
 
 export const getImagesByGroup = (group) =>
-  imagesData.filter((image) => image.groups?.includes(group));
+  imagesData.filter((image) => image.groups?.includes(group)).map(withArtist);
 
 export const getImagesByService = getImagesByGroup;
