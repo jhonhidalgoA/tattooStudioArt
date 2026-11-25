@@ -2,21 +2,23 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import Title from "../components/ui/title/Title";
-import { testimonialsData } from "../components/data/testimonialsData";
+import { getImagesByGroup } from "../components/data/imagesData";
 
 import "./TestimonialsPage.css";
 
+const testimonials = getImagesByGroup("testimonios");
+
 export default function TestimonialsPage() {
   const [current, setCurrent] = useState(0);
-  const total = testimonialsData.length;
+  const total = testimonials.length;
 
   const goTo = (index) => setCurrent((index + total) % total);
   const prev = () => goTo(current - 1);
   const next = () => goTo(current + 1);
 
-  const previous = testimonialsData[(current - 1 + total) % total];
-  const active = testimonialsData[current];
-  const following = testimonialsData[(current + 1) % total];
+  const previous = testimonials[(current - 1 + total) % total];
+  const active = testimonials[current];
+  const following = testimonials[(current + 1) % total];
 
   const number = String(current + 1).padStart(2, "0");
   const count = String(total).padStart(2, "0");
@@ -42,22 +44,22 @@ export default function TestimonialsPage() {
                 type="button"
                 className="testimonials__avatar testimonials__avatar--side"
                 onClick={prev}
-                aria-label={`Ver testimonio de ${previous.name}`}
+                aria-label={`Ver testimonio de ${previous.title}`}
               >
-                <img src={previous.image} alt="" />
+                <img src={previous.src} alt="" />
               </button>
 
               <div className="testimonials__avatar testimonials__avatar--active">
-                <img key={active.id} src={active.image} alt={active.name} />
+                <img key={active.id} src={active.src} alt={active.alt} />
               </div>
 
               <button
                 type="button"
                 className="testimonials__avatar testimonials__avatar--side"
                 onClick={next}
-                aria-label={`Ver testimonio de ${following.name}`}
+                aria-label={`Ver testimonio de ${following.title}`}
               >
-                <img src={following.image} alt="" />
+                <img src={following.src} alt="" />
               </button>
             </div>
 
@@ -75,10 +77,10 @@ export default function TestimonialsPage() {
             <blockquote key={active.id} className="testimonials__quote">
               <p>{active.quote}</p>
               <footer>
-                <span className="testimonials__name">{active.name}</span>
-                {active.service && (
+                <span className="testimonials__name">{active.title}</span>
+                {active.category && (
                   <span className="testimonials__service">
-                    {active.service}
+                    {active.category}
                   </span>
                 )}
               </footer>

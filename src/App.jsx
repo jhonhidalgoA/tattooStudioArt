@@ -5,6 +5,7 @@ import TattooCollectionPage from "./pages/TattooCollectionPage";
 import ArtistsProfilePage from "./pages/ArtistsProfilePage";
 import TattoosPage from "./pages/services/TattoosPage";
 import PiercingPage from "./pages/services/PiercingPage";
+import TattooCoverUpPage from "./pages/services/TattooCoverUpPage";
 
 import TattooDesignPage from "./pages/services/TattooDesignPage";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/services/tattoos" element={<TattoosPage />} />
         <Route path="/services/piercing" element={<PiercingPage />} />        
         <Route path="/services/design" element={<TattooDesignPage />} />
+        <Route path="/services/cover-up" element={<TattooCoverUpPage />} />
       </Routes>
     </>
   );

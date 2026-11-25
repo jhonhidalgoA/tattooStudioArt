@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Title from "../components/ui/title/Title";
-import { galleryData } from "../components/data/galleryData";
+import { getImagesByGroup } from "../components/data/imagesData";
 import GalleryCard from "../components/ui/card/GalleryCard";
 import GalleryLightbox from "../components/ui/card/GalleryLightbox";
 
 import "./GalleryPage.css";
+
+const galleryItems = getImagesByGroup("gallery");
 
 export default function GalleryPage() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -14,7 +16,7 @@ export default function GalleryPage() {
       <div className="gallery__container">
         <Title page="gallery" />
         <div className="gallery__grid">
-          {galleryData.map((item, index) => (
+          {galleryItems.map((item, index) => (
             <GalleryCard
               key={item.id}
               {...item}
@@ -23,8 +25,8 @@ export default function GalleryPage() {
           ))}
         </div>
       </div>
-        <GalleryLightbox
-        items={galleryData}
+      <GalleryLightbox
+        items={galleryItems}
         index={openIndex}
         onClose={() => setOpenIndex(null)}
         onChange={setOpenIndex}

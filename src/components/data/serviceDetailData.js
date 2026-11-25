@@ -1,4 +1,4 @@
-import tattooHero from "../../assets/images/gallery/images (1).jpeg";
+import tattooHero from "../../assets/images/gallery/tattoo_30.jpg";
 import tattooProcess from "../../assets/images/gallery/tattoo_gallery_23.jpg";
 import tattooDetail from "../../assets/images/gallery/tattoo_gallery_25.jpg";
 
@@ -10,6 +10,7 @@ import designHero from "../../assets/images/design/design_04.jpg";
 import designProcess from "../../assets/images/design/design_02.jpg";
 
 export const serviceDetailData = {
+  
   tattoos: {
     category: "Servicio especializado",
     title: "Tatuajes",
@@ -138,6 +139,36 @@ export const serviceDetailData = {
               "Puedes consultarnos previamente sobre las condiciones de acompañamiento del estudio. Buscamos mantener un ambiente tranquilo, cómodo y adecuado para el desarrollo de cada sesión.",
           },
         ],
+      },      
+    ],
+    gallery: [
+      {
+        id: "tattoo-1",
+        src: "/src/assets/images/gallery/tattoo_32.jpg",
+        alt: "Perforaciones en nariz y labios con joyería metálica",
+        title: "El legado del guerrero",
+        category: "tattoo",
+      },
+      {
+        id: "tattoo-2",
+        src: "/src/assets/images/gallery/tattoo_37.jpg",
+        alt: "Oreja con múltiples perforaciones en el lóbulo y hélix junto a un pequeño tatuaje de rosa",
+        title: "Esencia Botánica",
+        category: "tattoo",
+      },
+      {
+        id: "tattoo-3",
+        src: "/src/assets/images/gallery/tattoo_03.png",
+        alt: "Oreja con perforación industrial, aros dorados y lóbulo",
+        title: "Latidos del tiempo",
+        category: "tattoo",
+      },
+      {
+        id: "tattoo-4",
+        src: "/src/assets/images/gallery/tattoo_gallery_22.jpeg",
+        alt: "Perforación en el ombligo con joyería colgante",
+        title: "Floración",
+        category: "tattoo",
       },
     ],
   },

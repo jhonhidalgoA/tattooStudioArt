@@ -1,10 +1,11 @@
 import Title from "../../components/ui/title/Title";
-import { servicesData } from "../../components/data/servicesData";
+import { getImagesByGroup } from "../../components/data/imagesData";
 
 import ServiceCard from "../../components/ui/card/ServiceCard";
 
-
 import "./ServicesPage.css";
+
+const services = getImagesByGroup("portada");
 
 export default function ServicesPage() {
   return (
@@ -12,8 +13,8 @@ export default function ServicesPage() {
       <div className="services__container">
         <Title page="services" />
         <div className="services__grid">
-          {servicesData.map((item) => (
-            <ServiceCard key={item.id} {...item} />
+          {services.map((item) => (
+            <ServiceCard key={item.id} {...item} image={item.src} />
           ))}
         </div>
       </div>

@@ -1,20 +1,17 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Maximize2 } from "lucide-react";
 import { footerData } from "../../data/footerData";
+import { getImagesByGroup } from "../../data/imagesData";
 import FooterBottom from "../JAKvora/FooterBottom";
-import GalleryLightbox from "../card/GalleryLightbox";
+import CardModal from "../../../components/ui/modal/Modal";
 import "./Footer.css";
 
+const footerGallery = getImagesByGroup("footer");
+
 export default function Footer() {
-  const { contact, gallery, hours } = footerData;
+  const { contact, hours } = footerData;
   const [openIndex, setOpenIndex] = useState(null);
   const cta = "Reservar cita";
-
-  const lightboxItems = gallery.map((item) => ({
-    id: item.image,
-    src: item.image,
-    alt: item.alt,
-  }));
 
   return (
     <footer className="footer">
@@ -39,11 +36,11 @@ export default function Footer() {
                 <MapPin size={28} aria-hidden="true" />
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                    `${contact.address}, ${contact.city}`,
+                    `${contact.address}, ${contact.city ?? ""}`,
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Ver ubicación: ${contact.address}, ${contact.city}`}
+                  aria-label={`Ver ubicación: ${contact.address}`}
                 >
                   {contact.address}
                 </a>
@@ -54,15 +51,15 @@ export default function Footer() {
         <section>
           <h4>Galería</h4>
           <div className="footer__thumbs">
-            {gallery.map((item, index) => (
+            {footerGallery.map((item, index) => (
               <button
-                key={item.image}
+                key={item.id}
                 type="button"
                 className="footer__thumb"
                 aria-label={`Ampliar: ${item.alt}`}
                 onClick={() => setOpenIndex(index)}
               >
-                <img src={item.image} alt={item.alt} loading="lazy" />
+                <img src={item.src} alt={item.alt} loading="lazy" />
                 <span className="footer__thumb-zoom" aria-hidden="true">
                   <Maximize2 size={14} />
                 </span>
@@ -94,9 +91,10 @@ export default function Footer() {
         </section>
       </div>
       <FooterBottom />
-      <GalleryLightbox
-        items={lightboxItems}
+      <CardModal
+        items={footerGallery}
         index={openIndex}
+        ctaHref="#reservar"
         onClose={() => setOpenIndex(null)}
         onChange={setOpenIndex}
       />

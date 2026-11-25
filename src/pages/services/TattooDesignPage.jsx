@@ -123,39 +123,9 @@ export default function TattooCoverUpPage() {
                 ))}
               </ul>
             </div>
-          </section>
-
-          {/* 5. Ejemplos reales */}
-          <section className="service-detail__section">
-            <ServiceSectionTitle
-              eyebrow="Portafolio"
-              title="Diseños personalizados"
-            />
-            <div className="service-detail__gallery">
-              {(service.gallery ?? galleryData).map((item) => (
-                <figure key={item.id} className="service-detail__work">
-                  <img src={item.src} alt={item.alt || item.title} />
-                  <figcaption>{item.title}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
+          </section>     
           
-          {/* 5. Ejemplos reales */}
-          <section className="service-detail__section">
-            <ServiceSectionTitle
-              eyebrow="Arte en cada detalle."
-              title="Precisión y estilo en cada perforación"
-            />
-            <div className="service-detail__gallery">
-              {(service.gallery ?? galleryData).map((item) => (
-                <figure key={item.id} className="service-detail__work">
-                  <img src={item.src} alt={item.alt || item.title} />
-                  <figcaption>{item.title}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
+          
           {/* 6. Preguntas frecuentes */}
           <section className="service-detail__section">
             <ServiceSectionTitle
@@ -212,6 +182,21 @@ export default function TattooCoverUpPage() {
                   </details>
                 ))}
               </div>
+            </div>
+          </section>
+           {/* 5. Ejemplos reales */}
+          <section className="service-detail__section">
+            <ServiceSectionTitle
+              eyebrow="Portafolio"
+              title="Diseños personalizados"
+            />
+            <div className="service-detail__gallery">
+              {(service.gallery ?? galleryData).map((item) => (
+                <figure key={item.id} className="service-detail__work">
+                  <img src={item.src} alt={item.alt || item.title} />
+                  <figcaption>{item.title}</figcaption>
+                </figure>
+              ))}
             </div>
           </section>
         </div>
