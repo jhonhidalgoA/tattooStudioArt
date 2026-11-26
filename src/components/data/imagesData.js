@@ -13,14 +13,14 @@ const withArtist = (image) =>
     : image;
 
 export const imagesData = [
-  /* hero */
+  
   {
     id: 1,
     src: "/images/hero/tattoo_01.jpg",
     alt: "Tatuaje realista de un lobo con cadenas y detalles de alto contraste en el pecho",
     title: "Instinto Salvaje",
     category: "Realismo",
-    groups: ["gallery", "tatuajes"],
+    groups: ["gallery"],
     description:
       "Un retrato imponente de un lobo que combina sombras profundas, texturas detalladas y un nivel de realismo que transmite fuerza y carácter.",
     artistSlug: "edwin-wood",
@@ -31,7 +31,7 @@ export const imagesData = [
     alt: "Tatuaje estilo boceto de una brújula con líneas geométricas y trazos de dibujo técnico",
     title: "Rumbo Propio",
     category: "Boceto",
-    groups: ["gallery", "tatuajes"],
+    groups: ["gallery"],
     description:
       "Una composición geométrica inspirada en la exploración y el movimiento, creada mediante trazos espontáneos, líneas superpuestas y detalles de boceto.",
     artistSlug: "sara-morgan",
@@ -66,7 +66,7 @@ export const imagesData = [
     alt: "Tatuaje de dos golondrinas, flores rojas y formas geométricas en la cadera",
     title: "Vuelo Geométrico",
     category: "Tradicional",
-    groups: ["footer"],
+    groups: ["footer", "gallery"],
     description:
       "Dos golondrinas y flores rojas se encuentran con formas geométricas y puntillismo, en una composición que une tradición y diseño contemporáneo.",
     artistSlug: "sara-morgan",
@@ -77,7 +77,7 @@ export const imagesData = [
     alt: "Tatuaje tribal negro de líneas fluidas sobre el hombro y el cuello",
     title: "Fuego Negro",
     category: "Tribal",
-    groups: ["footer"],
+    groups: ["footer", "gallery"],
     description:
       "Líneas negras fluidas que siguen el movimiento del hombro y el cuello, con un contraste fuerte entre el trazo sólido y la piel.",
     artistSlug: "edwin-wood",
@@ -99,7 +99,7 @@ export const imagesData = [
     alt: "Tatuaje tribal negro simétrico que recorre la espalda y sigue la columna",
     title: "Columna Viva",
     category: "Tribal",
-    groups: ["footer"],
+    groups: ["footer", "gallery"],
     description:
       "Un diseño simétrico que recorre la espalda y sigue la columna, con volúmenes negros sólidos y remates en espiral.",
     artistSlug: "edwin-wood",
@@ -110,7 +110,7 @@ export const imagesData = [
     alt: "Tatuaje de línea fina con una flor delicada",
     title: "Jardín Sutil",
     category: "Línea Fina",
-    groups: ["footer"],
+    groups: ["footer", "gallery"],
     description:
       "Trazos mínimos y precisos que dibujan una flor con delicadeza, para quien busca un tatuaje discreto y atemporal.",
     artistSlug: "susy-smith",
@@ -126,6 +126,8 @@ export const imagesData = [
       "Una mariposa en tonos naranja y ámbar, con pequeños detalles de color que le dan movimiento y calidez.",
     artistSlug: "susy-smith",
   },
+
+  /*artists */
 
   /* services */
   {
@@ -230,6 +232,34 @@ export const imagesData = [
     quote:
       "Siempre quise hacerme un piercing, pero tenía muchas dudas. Me asesoraron durante todo el proceso, cuidaron cada detalle y el resultado quedó perfecto. Una experiencia excelente, con mucha profesionalidad y confianza.",
   },
+
+  /*galley*/
+
+  {
+    id: 25,
+    src: "/images/gallery/tattoo_40.webp",
+    alt: "Tatuaje de golondrina tradicional con colores vibrantes",
+    title: "Golondrina Tradicional",
+    category: "Old School",
+    groups: ["gallery"],
+    description:
+      "Golondrina de estilo tradicional con colores intensos y contornos definidos, inspirada en el arte clásico del tatuaje.",
+    artistSlug: "sara-morgan",
+  },
+
+   {
+    id: 24,
+    src: "/images/gallery/tattoo_01.jpg",
+    alt: "Diseño de tatuaje botánico de líneas finas sobre la mano",
+    title: "Arte Botánico",
+    category: "Fine Line",
+    groups: ["gallery"],
+    description:
+      "Composición botánica de trazos delicados y detalles minimalistas que evocan la belleza de la naturaleza.",
+    artistSlug: "sara-morgan",
+  },
+   
+  
 ];
 
 export const getImage = (id) =>

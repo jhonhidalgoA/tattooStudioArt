@@ -6,7 +6,7 @@ import GalleryLightbox from "../components/ui/card/GalleryLightbox";
 
 import "./GalleryPage.css";
 
-const galleryItems = getImagesByGroup("gallery");
+const galleryItems = getImagesByGroup("gallery").slice(0, 4);
 
 export default function GalleryPage() {
   const [openIndex, setOpenIndex] = useState(null);
