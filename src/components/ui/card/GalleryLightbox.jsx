@@ -7,8 +7,7 @@ export default function GalleryLightbox({ items, index, onClose, onChange }) {
   const total = items.length;
   const isOpen = index !== null;
 
-  // Al abrir: bloquea el scroll del fondo y lleva el foco al botón de cerrar.
-  // Al cerrar: devuelve el foco a la card que lo abrió.
+
   useEffect(() => {
     if (!isOpen) return;
     const previouslyFocused = document.activeElement;
@@ -20,7 +19,7 @@ export default function GalleryLightbox({ items, index, onClose, onChange }) {
     };
   }, [isOpen]);
 
-  // Teclado: Esc cierra, flechas cambian de foto.
+  
   useEffect(() => {
     if (!isOpen) return;
     const onKeyDown = (event) => {

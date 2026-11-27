@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import Artists from "./ArtistsPage";
 import Gallery from "./GalleryPage";
@@ -31,6 +32,25 @@ const INTERVAL = 7000;
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    const target = location.state?.scrollTo;
+    if (!target) return;
+
+    const timer = setTimeout(() => {
+      if (target === "#hero" || target === "#home" || target === "#inicio") {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      } else {
+        const id = target.replace(/^#/, "");
+        const el = document.getElementById(id);
+        el?.scrollIntoView({ behavior: "auto" });
+      }
+      window.history.replaceState({}, document.title);
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [location.state]);
 
   useEffect(() => {
     slides.forEach(({ image }) => {
@@ -51,7 +71,7 @@ export default function Hero() {
   return (
     <>
       <Navbar />
-      <section id="home" className="hero">
+      <section id="hero" className="hero">
         <div className="container hero__inner">
           <div className="hero__content" key={`content-${current}`}>
             {slide.eyebrow && <p className="hero__eyebrow">{slide.eyebrow}</p>}

@@ -1,43 +1,85 @@
 .tattoo__filters {
+  position: relative; /* nuevo: referencia para la línea deslizante */
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* antes: wrap */
   justify-content: center;
   gap: 2rem;
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   list-style: none;
   padding: 0;
+
+  /* nuevo: scroll horizontal en pantallas angostas */
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.tattoo__filters::-webkit-scrollbar {
+  display: none;
 }
 
 .tattoo__filter-btn {
   background: transparent;
   border: none;
   font-family: var(--font-body, sans-serif);
-  font-size: 1.05rem;
+  font-size: var(--text-sm, 0.875rem); /* antes: 1.05rem */
+  font-weight: var(--weight-bold, 700); /* nuevo: igual en todos los estados */
+  letter-spacing: 0.12em; /* nuevo */
+  text-transform: uppercase; /* nuevo */
   color: var(--text-muted, #888888);
   cursor: pointer;
   padding: 0 0 0.4rem 0;
   position: relative;
   transition: color 0.2s ease;
+
+  /* nuevo */
+  flex-shrink: 0;
+  white-space: nowrap;
+  scroll-snap-align: center;
 }
 
 .tattoo__filter-btn:hover {
   color: var(--text, #ffffff);
 }
 
-/* Estado activo con la línea dorada inferior */
-.tattoo__filter-btn.active {
-  color: var(--accent, #d4af37);
-  font-weight: 500;
+/* nuevo: foco visible para teclado */
+.tattoo__filter-btn:focus-visible {
+  outline: 2px solid var(--accent, #d4af37);
+  outline-offset: -2px;
+  border-radius: 2px;
 }
 
-.tattoo__filter-btn.active::after {
-  content: "";
+/* Estado activo */
+.tattoo__filter-btn.active {
+  color: var(--accent, #d4af37);
+}
+
+/* nuevo: reemplaza el ::after de .active por una línea que se desliza */
+.tattoo__filter-indicator {
   position: absolute;
-  left: 0;
   bottom: 0;
-  width: 100%;
   height: 2px;
   background: var(--accent, #d4af37);
   border-radius: 2px;
+  pointer-events: none;
+}
+
+.tattoo__filter-indicator.is-animated {
+  transition:
+    left 350ms var(--ease-out, ease),
+    width 350ms var(--ease-out, ease);
+}
+
+/* nuevo: alinear a la izquierda cuando hay overflow en móvil */
+@media (max-width: 768px) {
+  .tattoo__filters {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tattoo__filter-indicator.is-animated {
+    transition: none;
+  }
 }

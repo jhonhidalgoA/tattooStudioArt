@@ -1,7 +1,7 @@
 import { Maximize2 } from "lucide-react";
 import "./GalleryCard.css";
 
-export default function GalleryCard({ src, alt, title, category, onOpen }) {
+export default function GalleryCard({ src, alt, title, onOpen }) {
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
@@ -24,14 +24,7 @@ export default function GalleryCard({ src, alt, title, category, onOpen }) {
           <Maximize2 size={18} />
         </span>
       </div>
-      <div className="gallery-card__caption">
-        <span className="gallery-card__label">
-          <span className="gallery-card__num"></span>
-          <span className="gallery-card__dash" aria-hidden="true"></span>
-          {category}
-        </span>
-        <span className="gallery-card__title">{title}</span>
-      </div>
+     
     </article>
   );
 }

@@ -13,12 +13,15 @@ import "./Modal.css";
 const FOCUSABLE =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+// Pendiente: destino del botón (formulario de contacto o WhatsApp)
+const BOOKING_LINK = "#";
+
 export default function CardModal({
   items = [],
   index,
   onClose,
   onChange,
-  note = "Cada diseño es una creación única, Esta imagen es solo una referencia de inspiración.",
+  note = "Cada diseño es una creación única, esta imagen es solo una referencia de inspiración.",
 }) {
   const dialogRef = useRef(null);
   const closeRef = useRef(null);
@@ -265,6 +268,13 @@ export default function CardModal({
               ) : (
                 <div className="card-modal__artist">{artistContent}</div>
               ))}
+
+            <a
+              href={BOOKING_LINK}
+              className="btn btn--primary card-modal__cta"
+            >
+              Quiero algo así
+            </a>
 
             {tags.length > 0 && (
               <ul className="card-modal__tags">

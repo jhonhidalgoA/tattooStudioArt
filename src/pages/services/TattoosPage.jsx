@@ -10,6 +10,7 @@ import { galleryData } from "../../components/data/galleryData";
 
 import Navbar from "../../components/ui/navbar/Navbar";
 import Footer from "../../components/ui/footer/Footer";
+import Modal from "../../components/ui/modal/Modal";
 
 import ServiceSectionTitle from "../../components/ui/title/ServiceSectionTitle";
 
@@ -19,8 +20,9 @@ const BOOKING_LINK = `tel:${footerData.contact.phoneHref}`;
 
 export default function TattoosPage() {
   const [activeFaq, setActiveFaq] = useState(0);
-  const service = serviceDetailData.tattoos;
+  const [modalIndex, setModalIndex] = useState(null);
 
+  const service = serviceDetailData.tattoos;
   const base = servicesData.find((item) => item.link === "/services/tattoos");
 
   if (!service) {
@@ -31,14 +33,23 @@ export default function TattoosPage() {
       </main>
     );
   }
+
   const number = String(base?.id ?? 1).padStart(2, "0");
+  const workItems = service.gallery ?? galleryData;
+
+  const handleWorkKeyDown = (event, index) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setModalIndex(index);
+    }
+  };
 
   return (
     <>
       <Navbar />
       <main className="service-detail">
         <div className="service-detail__container">
-          {/* 1. Hero */}
+          {/* 1. Hero (imágenes estáticas) */}
           <section className="service-detail__hero">
             <div className="service-detail__hero-text">
               <p className="service-detail__tag">
@@ -135,7 +146,7 @@ export default function TattoosPage() {
                 </ul>
               </div>
             </div>
-          </section>         
+          </section>
 
           {/* step four */}
           <section className="service-detail__section">
@@ -195,18 +206,27 @@ export default function TattoosPage() {
               </div>
             </div>
           </section>
-          {/* 5. Ejemplos reales */}
+
+          {/* 5. Ejemplos reales (con modal) */}
           <section className="service-detail__section">
             <ServiceSectionTitle
               eyebrow="Trazos únicos."
-              title="Ideas que se convierten en arte sobre la piel.
-              "
+              title="Ideas que se convierten en arte sobre la piel."
             />
             <div className="service-detail__gallery">
-              {(service.gallery ?? galleryData).map((item) => (
-                <figure key={item.id} className="service-detail__work">
-                  <img src={item.src} alt={item.alt || item.title} />
-                  <figcaption>{item.title}</figcaption>
+              {workItems.map((item, index) => (
+                <figure
+                  key={item.id ?? index}
+                  className="service-detail__work service-detail__work--interactive"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={
+                    item.title ? `Ampliar: ${item.title}` : "Ampliar obra"
+                  }
+                  onClick={() => setModalIndex(index)}
+                  onKeyDown={(e) => handleWorkKeyDown(e, index)}
+                >
+                  <img src={item.src} alt={item.alt || item.title || ""} />
                 </figure>
               ))}
             </div>
@@ -214,6 +234,13 @@ export default function TattoosPage() {
         </div>
       </main>
       <Footer />
+
+      <Modal
+        items={workItems}
+        index={modalIndex}
+        onClose={() => setModalIndex(null)}
+        onChange={setModalIndex}
+      />
     </>
   );
 }

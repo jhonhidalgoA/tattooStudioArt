@@ -2,7 +2,7 @@ import { useState } from "react";
 import Title from "../components/ui/title/Title";
 import { getImagesByGroup } from "../components/data/imagesData";
 import GalleryCard from "../components/ui/card/GalleryCard";
-import GalleryLightbox from "../components/ui/card/GalleryLightbox";
+import CardModal from "../components/ui/modal/Modal"; 
 
 import "./GalleryPage.css";
 
@@ -25,7 +25,7 @@ export default function GalleryPage() {
           ))}
         </div>
       </div>
-      <GalleryLightbox
+      <CardModal
         items={galleryItems}
         index={openIndex}
         onClose={() => setOpenIndex(null)}

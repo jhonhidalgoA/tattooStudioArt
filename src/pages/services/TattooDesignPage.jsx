@@ -9,27 +9,42 @@ import { footerData } from "../../components/data/footerData";
 import Navbar from "../../components/ui/navbar/Navbar";
 import Footer from "../../components/ui/footer/Footer";
 import ServiceSectionTitle from "../../components/ui/title/ServiceSectionTitle";
+import Modal from "../../components/ui/modal/Modal";
 
 import "./TattooCoverUpPage.css";
 
 const BOOKING_LINK = `tel:${footerData.contact.phoneHref}`;
 
-export default function TattooCoverUpPage() {
+export default function TattooDesignPage() {
   const [activeFaq, setActiveFaq] = useState(0);
+  const [modalIndex, setModalIndex] = useState(null);
+
   const service = serviceDetailData.design;
+
+  if (!service) {
+    return null;
+  }
 
   const base = servicesData.find(
     (item) =>
       item.link === "/services/design" || item.link === "/servicios/diseno",
   );
   const number = String(base?.id ?? 4).padStart(2, "0");
+  const workItems = service.gallery ?? galleryData;
+
+  const handleWorkKeyDown = (event, index) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setModalIndex(index);
+    }
+  };
 
   return (
     <>
       <Navbar />
       <main className="service-detail">
         <div className="service-detail__container">
-          {/* 1. Hero con distribución --design */}
+          {/* 1. Hero con distribución --design (imágenes estáticas) */}
           <section className="service-detail__hero">
             <div className="service-detail__hero-text">
               <p className="service-detail__tag">
@@ -107,7 +122,7 @@ export default function TattooCoverUpPage() {
               <h3 className="service-detail__care-title">
                 Antes de iniciar tu boceto
               </h3>
-              <ul className="service-detail__list">
+              <ul className="service__detail-list">
                 {service.care.before.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -117,15 +132,14 @@ export default function TattooCoverUpPage() {
               <h3 className="service-detail__care-title">
                 Durante y después de la propuesta
               </h3>
-              <ul className="service-detail__list">
+              <ul className="service__detail-list">
                 {service.care.after.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
-          </section>     
-          
-          
+          </section>
+
           {/* 6. Preguntas frecuentes */}
           <section className="service-detail__section">
             <ServiceSectionTitle
@@ -184,17 +198,27 @@ export default function TattooCoverUpPage() {
               </div>
             </div>
           </section>
-           {/* 5. Ejemplos reales */}
+
+          {/* 5. Ejemplos reales (con modal y sin figcaption) */}
           <section className="service-detail__section">
             <ServiceSectionTitle
               eyebrow="Portafolio"
               title="Diseños personalizados"
             />
             <div className="service-detail__gallery">
-              {(service.gallery ?? galleryData).map((item) => (
-                <figure key={item.id} className="service-detail__work">
-                  <img src={item.src} alt={item.alt || item.title} />
-                  <figcaption>{item.title}</figcaption>
+              {workItems.map((item, index) => (
+                <figure
+                  key={item.id ?? index}
+                  className="service-detail__work service-detail__work--interactive"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={
+                    item.title ? `Ampliar: ${item.title}` : "Ampliar obra"
+                  }
+                  onClick={() => setModalIndex(index)}
+                  onKeyDown={(e) => handleWorkKeyDown(e, index)}
+                >
+                  <img src={item.src} alt={item.alt || item.title || ""} />
                 </figure>
               ))}
             </div>
@@ -202,6 +226,13 @@ export default function TattooCoverUpPage() {
         </div>
       </main>
       <Footer />
+
+      <Modal
+        items={workItems}
+        index={modalIndex}
+        onClose={() => setModalIndex(null)}
+        onChange={setModalIndex}
+      />
     </>
   );
 }

@@ -19,7 +19,7 @@ export const imagesData = [
     src: "/images/hero/tattoo_01.jpg",
     alt: "Tatuaje realista de un lobo con cadenas y detalles de alto contraste en el pecho",
     title: "Instinto Salvaje",
-    category: "Realismo",
+    category: "realism",
     groups: ["gallery"],
     description:
       "Un retrato imponente de un lobo que combina sombras profundas, texturas detalladas y un nivel de realismo que transmite fuerza y carácter.",
@@ -30,7 +30,7 @@ export const imagesData = [
     src: "/images/hero/tattoo_02.png",
     alt: "Tatuaje estilo boceto de una brújula con líneas geométricas y trazos de dibujo técnico",
     title: "Rumbo Propio",
-    category: "Boceto",
+    category: "sketch",
     groups: ["gallery"],
     description:
       "Una composición geométrica inspirada en la exploración y el movimiento, creada mediante trazos espontáneos, líneas superpuestas y detalles de boceto.",
@@ -271,3 +271,16 @@ export const getImagesByGroup = (group) =>
   imagesData.filter((image) => image.groups?.includes(group)).map(withArtist);
 
 export const getImagesByService = getImagesByGroup;
+
+export const getImagesByCategory = (category, group = null) => {
+  const base = group ? getImagesByGroup(group) : imagesData.map(withArtist);
+
+  if (!category || category === "all") {
+    return base;
+  }
+
+  const normalizedCategory = category.trim().toLowerCase();
+  return base.filter(
+    (item) => item.category?.trim().toLowerCase() === normalizedCategory
+  );
+};
